@@ -6,7 +6,7 @@ GetThatPath is a Chrome Extension that allows you to easily **copy the CSS of an
 
 ## Resources 
 
-Some relevant resources are:
+Some relevant resources:
 
 - [**Download the extension**](https://blog.alexboboc.com/writing-a-chrome-extension-to-extract-css-paths-faster/) for free from the Chrome Web Store.
 - I wrote a [**blog post**](https://blog.alexboboc.com/writing-a-chrome-extension-to-extract-css-paths-faster/) on how I coded it.
