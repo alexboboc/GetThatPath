@@ -95,7 +95,7 @@
         removeCanvas();
         
         // Read hovered element and its bounding box
-        var rect = currentElement.getBoundingClientRect();
+        var rect = currentElementHovered.getBoundingClientRect();
         var currentElement = getElementUnderMouse(e);        
         
         // Create canvas and draw a red box over the hovered element
