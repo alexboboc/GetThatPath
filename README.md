@@ -10,4 +10,4 @@ Some relevant resources are:
 
 - [**Download the extension**](https://blog.alexboboc.com/writing-a-chrome-extension-to-extract-css-paths-faster/) for free from the Chrome Web Store.
 - I wrote a [**blog post**](https://blog.alexboboc.com/writing-a-chrome-extension-to-extract-css-paths-faster/) on how I coded it.
-- Download the raw zipped version from the releases section.
+- Download the raw zipped version from the [releases section](https://github.com/alexboboc/GetThatPath/releases).
