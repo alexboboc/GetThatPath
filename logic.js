@@ -33,32 +33,36 @@
 
     function getDomPath(el) {
         // Inversely traverse the DOM tree starting at the given node, and log steps
-        var stack = [];
-        while (el.parentNode != null) {
-            var sibCount = 0;
-            var sibIndex = 0;
-            for (var i = 0; i < el.parentNode.childNodes.length; i++) {
-                var sib = el.parentNode.childNodes[i];
-                if (sib.nodeName == el.nodeName) {
-                    if (sib === el) {
-                        sibIndex = sibCount;
+        if (!(el instanceof Element)) {
+            return;
+        }
+        var path = [];
+        
+        while (el.nodeType === Node.ELEMENT_NODE) {
+            var selector = el.nodeName.toLowerCase();
+            // If we find an ID, we have enough to uniquely identify from that point on
+            if (el.id) {
+                selector += '#' + el.id;
+                path.unshift(selector);
+                break;
+            } else {
+                var sib = el;
+                var nth = 1;
+                while (sib = sib.previousElementSibling) {
+                    if (sib.nodeName.toLowerCase() == selector) {
+                       nth++;
                     }
-                    sibCount++;
+                }
+                if (nth != 1) {
+                    selector += ":nth-of-type("+nth+")";
                 }
             }
-            if (el.hasAttribute('id') && el.id != '') {
-                stack.unshift(el.nodeName.toLowerCase() + '#' + el.id);
-            } else if (sibCount > 1) {
-                stack.unshift(el.nodeName.toLowerCase() + ':eq(' + sibIndex + ')');
-            } else {
-                stack.unshift(el.nodeName.toLowerCase());
-            }
+            path.unshift(selector);
             el = el.parentNode;
         }
-        
-        // Join all elements traversed into final path
-        var pathComponents = stack.slice(1);
-        return pathComponents.join(' > ');
+
+        // Unite all components and build path
+        return path.join(" > ");
     }
 
     function copyToClipboard(text) {
@@ -95,8 +99,8 @@
         removeCanvas();
         
         // Read hovered element and its bounding box
-        var rect = currentElementHovered.getBoundingClientRect();
         var currentElement = getElementUnderMouse(e);        
+        var rect = currentElement.getBoundingClientRect();
         
         // Create canvas and draw a red box over the hovered element
         var context = createCanvas();

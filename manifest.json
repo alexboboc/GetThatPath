@@ -1,6 +1,6 @@
 {
   "name": "Get That Path",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 2,
   "description": "Easily copy the CSS of any web element to the clipboard just by point-and-click.",
   "background": {
